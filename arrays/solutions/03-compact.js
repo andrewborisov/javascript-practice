@@ -5,4 +5,4 @@
  * @param {Array} array - An array of any elements
  * @returns {Array}
  */
-export const compact = (array) => array.filter((el) => el);
+export const compact = (array) => array.filter(Boolean);
