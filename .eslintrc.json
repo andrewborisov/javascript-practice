@@ -29,6 +29,7 @@
     "prefer-destructuring": "off",
     "array-callback-return": "off",
     "consistent-return": "off",
-    "no-param-reassign": "off"
+    "no-param-reassign": "off",
+    "default-param-last": "off"
   }
 }
