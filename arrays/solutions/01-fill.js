@@ -7,3 +7,5 @@
  * @returns {Array}
  */
 export const fill = (arraySize, value) => new Array(arraySize).fill(value);
+//  or
+export const fillerSecond = (count, value) => [...value.repeat(count)];
