@@ -1,6 +1,4 @@
-# Javascript practice
-I prepared javascript exercises, which I hope will help you to improve your coding skills.
-I do not affirm my solutions are the best ways to solve each of the exercises, but I believe they could help you to find some new ideas if you stuck.
+
 
 ## Prerequisites
 
