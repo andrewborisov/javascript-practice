@@ -5,52 +5,22 @@
  * @param {Object} secondObj - Object of any values
  * @returns {boolean}
  */
-export const isEqualDeep = (firstObj, secondObj) => {
-  const firstObjKeys = Object.keys(firstObj);
-  const secondObjKeys = Object.keys(secondObj);
+function areEqual(obj1, obj2) {
+  if (typeof obj1 === "object" && typeof obj2 === "object") {
+    const obj1props = Object.keys(obj1);
+    const obj2props = Object.keys(obj2);
 
-  if (firstObjKeys.length === 0 && secondObjKeys.length === 0) {
-    return true;
+    if (obj1props.length !== obj2props.length) return false;
+
+    return obj1props.every((key) => {
+      if (obj2.hasOwnProperty(key)) {
+        if (typeof obj1[key] === "object" && obj1[key] !== null) {
+          return areEqual(obj1[key], obj2[key]);
+        }
+        return obj1[key] === obj2[key];
+      }
+
+      return false;
+    });
   }
-
-  const compareList = firstObjKeys.map((key) => {
-    const valueOfFirstObject = firstObj[key];
-    const valueOfSecondObject = secondObj[key];
-    if ((Number.isNaN(valueOfFirstObject) && Number.isNaN(valueOfSecondObject))
-      || (valueOfFirstObject === null && valueOfSecondObject === null)) {
-      return true;
-    }
-    if (valueOfFirstObject === valueOfSecondObject) {
-      return true;
-    }
-    if (Array.isArray(valueOfFirstObject) && Array.isArray(valueOfSecondObject)) {
-      return isArraysEqualDeep(valueOfFirstObject, valueOfSecondObject);
-    }
-    if (typeof valueOfFirstObject === 'object' && typeof valueOfSecondObject === 'object') {
-      return isEqualDeep(valueOfFirstObject, valueOfSecondObject);
-    }
-
-    return false;
-  });
-
-  return !compareList.includes(false) && !compareList.includes(undefined);
-};
-
-const isArraysEqualDeep = (firstArray, secondArray) => {
-  if (firstArray.length !== secondArray.length) {
-    return false;
-  }
-
-  const compared = firstArray.map((el, id) => {
-    if (Array.isArray(el) && Array.isArray(secondArray[id])) {
-      return isArraysEqualDeep(el, secondArray[id]);
-    }
-    if (typeof el === 'object' && typeof secondArray[id] === 'object') {
-      return isEqualDeep(el, secondArray[id]);
-    }
-
-    return secondArray[id] === el;
-  });
-
-  return !compared.includes(false);
-};
+}
