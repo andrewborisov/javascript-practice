@@ -7,3 +7,14 @@
  * @returns {Array}
  */
 export const fill = (arraySize, value) => new Array(arraySize).fill(value);
+// THIS IS THE REAL SOLUTION:
+// const fill = (arraySize, value) => {
+//     const myArrays = []
+//     for (let i = 0; i < arraySize; i++) {
+//         myArrays.push(value);
+//     }
+//     return myArrays;
+// }
+// const size = 3;
+// const valuefill = "joel"
+// console.log(fill(size, valuefill));
