@@ -11,3 +11,13 @@ export const fromPairs = (array) => array.reduce((acc, value) => {
   }
   return acc;
 }, {});
+// THIS IS THE UPDATED SOLUTION:
+// const fromPairs = (array) => {
+//     const pairArray = array.reduce((acc, [Key, value]) => {
+//         acc[Key] = value;
+//         return acc;
+//     }, {});
+//     return pairArray;
+// }
+// const datas = [['a', 1], ['b', 2], ["joel", 20]];
+// console.log(fromPairs(datas));
